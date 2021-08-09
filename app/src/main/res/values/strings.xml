@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">FireBrowser</string>
+    <string name="txt_ads_interstitial_key" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="txt_ads_native_key" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="txt_ads_banner_key" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="txt_ads_rewarded_video_key" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+
+    <string name="app_name">Fire Browser</string>
+
+    <string name="txt_share_string_video">FireBrowser \n\nhttps://play.google.com/store/apps/details?id=</string>
+    <string name="txt_share_string_music">FireBrowser \n\nhttps://play.google.com/store/apps/details?id=</string>
+    <string name="txt_share_string_app">FireBrowser \n\nhttps://play.google.com/store/apps/details?id=</string>
+    <string name="txt_share_app">Share App</string>
+    <string name="txt_share">Share</string>
+
+    <string name="txt_loading">Loading...</string>
+    <string name="txt_copied_text">Copied Text</string>
+    <string name="txt_system_info">System info</string>
+    <string name="txt_browse">Browse</string>
+    <string name="txt_download">Download</string>
+    <string name="txt_completed">Completed</string>
+    <string name="txt_fire_vpn">Fire Vpn</string>
+    <string name="txt_welcome_to">Welcome to</string>
+    <string name="txt_fire">Fire</string>
+    <string name="txt_browser">Browser</string>
+    <string name="txt_starts">Starts</string>
+    <string name="txt_skip"><u>Skip</u></string>
+    <string name="txt_and_accept_default_privacy_settings">And accept default privacy settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
