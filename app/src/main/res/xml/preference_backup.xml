@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference android:summary="@string/data_summary" />
+
+    <MultiSelectListPreference
+        android:dialogTitle="@string/settings_data_backup"
+        android:key="backup_entries"
+        android:summary=""
+        android:title="@string/settings_data_backup"
+        android:entries="@array/setting_entries_backup"
+        android:entryValues="@array/setting_values_backup"
+        />
+
+    <MultiSelectListPreference
+        android:dialogTitle="@string/settings_data_restore"
+        android:key="restore_entries"
+        android:summary=""
+        android:title="@string/settings_data_restore"
+        android:entries="@array/setting_entries_restore"
+        android:entryValues="@array/setting_values_restore"
+        />
+
+    <PreferenceCategory android:title="@string/title_appData">
+        <Preference
+            android:key="data_exDB"
+            android:title="@string/settings_data_backup"
+            android:summary="@string/setting_summary_export_appData"/>
+        <Preference
+            android:key="data_imDB"
+            android:title="@string/settings_data_restore"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

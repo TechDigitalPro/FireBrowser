@@ -13,8 +13,8 @@ public class DialogUtils {
         AlertDialog.Builder adb = new AlertDialog.Builder(context);
                         adb
                        .setTitle(title)
-                        .setIcon(R.mipmap.ic_launcher)
-                        .setCancelable(false)
+                        .setIcon(R.drawable.ic_fire)
+                        .setCancelable(true)
                        .setMessage(content)
                        .setPositiveButton(okTitle, (dialogInterface, i) -> dialogInterface.dismiss())
                         .create()
@@ -25,23 +25,26 @@ public class DialogUtils {
     {
         new AlertDialog.Builder(context)
                 .setTitle(title)
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.drawable.ic_fire)
                 .setMessage(content)
-                .setCancelable(false)
+                .setCancelable(true)
                 .setPositiveButton(okTitle, okListener)
                 .create()
                 .show();
     }
 
     public static void showConfirmDialogWithListener(Context context, String title, String content, String okTitle, String cancelTitle, DialogInterface.OnClickListener okListener, DialogInterface.OnClickListener cancelListener) {
-        new AlertDialog.Builder(context)
-                .setTitle(title)
-                .setIcon(R.mipmap.ic_launcher)
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.MyDialogTheme);
+        builder.setTitle(title)
                 .setMessage(content)
-                .setCancelable(false)
+                .setCancelable(true)
                 .setPositiveButton(okTitle, okListener)
-                .setNegativeButton(cancelTitle, cancelListener)
-                .create()
-                .show();
+                .setNegativeButton(cancelTitle, cancelListener);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.getButton(dialog.BUTTON_POSITIVE).setTextColor(context.getResources().getColor(R.color.colorAccent));
+        dialog.getButton(dialog.BUTTON_NEGATIVE).setTextColor(context.getResources().getColor(R.color.grey_light));
+        dialog.getButton(dialog.BUTTON_POSITIVE).setAllCaps(false);
+        dialog.getButton(dialog.BUTTON_NEGATIVE).setAllCaps(false);
     }
 }

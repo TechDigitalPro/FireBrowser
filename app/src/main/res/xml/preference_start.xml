@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <Preference
+        android:summary="@string/setting_gesture_hint"/>
+
+    <CheckBoxPreference
+        android:key="sp_autofill"
+        android:defaultValue="true"
+        android:title="@string/setting_title_autofill"
+        android:summary="@string/setting_summary_autofill"/>
+
+    <CheckBoxPreference
+        android:key="saveHistory"
+        android:defaultValue="true"
+        android:title="@string/setting_title_history"/>
+
+    <CheckBoxPreference
+        android:key="sp_images"
+        android:defaultValue="true"
+        android:title="@string/setting_title_images"/>
+
+    <CheckBoxPreference
+        android:key="sp_savedata"
+        android:defaultValue="false"
+        android:title="@string/setting_title_save_data"/>
+
+    <CheckBoxPreference
+        android:key="sp_fingerPrintProtection"
+        android:defaultValue="false"
+        android:title="@string/setting_title_fingerPrint"/>
+
+    <CheckBoxPreference
+        android:key="sp_location"
+        android:defaultValue="false"
+        android:title="@string/setting_title_location"/>
+
+    <PreferenceCategory android:title="@string/setting_title_adblock">
+
+        <ListPreference
+            android:key="ab_hosts"
+            android:defaultValue="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+            android:title="@string/setting_title_adblockHost"
+            android:entries="@array/setting_entries_adBlock"
+            android:entryValues="@array/setting_values_adBlock"/>
+
+        <CheckBoxPreference
+            android:key="sp_ad_block"
+            android:defaultValue="true"
+            android:summary="@string/setting_summary_adblock"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/setting_title_javascript">
+
+        <CheckBoxPreference
+            android:key="sp_javascript"
+            android:defaultValue="true"
+            android:summary="@string/setting_summary_javascript"/>
+
+        <Preference
+            android:key="start_java"
+            android:title="@string/setting_title_whitelistJS"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/setting_title_cookie">
+
+        <CheckBoxPreference
+            android:key="sp_cookies"
+            android:defaultValue="true"
+            android:summary="@string/setting_summary_cookie"/>
+
+        <Preference
+            android:key="start_cookie"
+            android:title="@string/setting_title_whitelistCookie"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/setting_title_dom">
+
+        <CheckBoxPreference
+            android:key="sp_remote"
+            android:defaultValue="true"
+            android:summary="@string/setting_summary_dom"/>
+
+        <Preference
+            android:key="start_remote"
+            android:title="@string/setting_title_dom_whitelist"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

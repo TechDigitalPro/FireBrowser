@@ -16,5 +16,31 @@
         <attr name="lkwTopTextSize" format="dimension" />
         <attr name="lkwSecondaryTextSize" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="MenuItemInformation">
+        <attr name="inf_title" format="string" />
+        <attr name="inf_description" format="string" />
+        <attr name="inf_sub" format="string" />
+        <attr name="inf_icon" format="reference" />
+        <attr name="inf_thumb" format="reference" />
+        <attr name="inf_icon_sub" format="reference" />
+        <attr name="inf_background_icon" format="color" />
+        <attr name="inf_hidde_icon_subcription" format="boolean" />
+        <attr name="inf_show_switch_check" format="boolean" />
+    </declare-styleable>
 
+    <!-- Browser -->
+    <declare-styleable name="SwitchTextPreference">
+        <attr name="switchDefault" format="boolean"/>"
+        <attr name="icon"/>
+        <attr name="defaultText" format="string"/>
+        <attr name="switchKey" format="string"/>
+        <attr name="titleText" format="string"/>
+        <attr name="hint" format="string"/>
+        <attr name="showSwitch" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="EditTextSwitchPreference">
+        <attr name="editTextSwitchKey" format="string"/>
+        <attr name="editTextSwitchKeyDefaultValue" format="boolean" />
+    </declare-styleable>
+    <!-- Browser -->
 </resources>

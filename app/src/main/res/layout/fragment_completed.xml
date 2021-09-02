@@ -2,6 +2,162 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/transparent_color"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:elevation="0dp">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetStart="0dp"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
+                        <LinearLayout
+                            android:id="@+id/toolbarView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_20"
+                                android:layout_weight="1"
+                                android:text="@string/txt_completed"
+                                android:textColor="@color/white_color"
+                                android:textSize="@dimen/text_20" />
+
+                            <ImageView
+                                android:id="@+id/toolbarSearch"
+                                android:layout_width="@dimen/sidebar_icon_size"
+                                android:layout_height="@dimen/sidebar_icon_size"
+                                android:padding="@dimen/padding_10"
+                                android:src="@drawable/ic_browser_download" />
+
+                            <ImageView
+                                android:id="@+id/toolbarSettings"
+                                android:layout_width="@dimen/sidebar_icon_size"
+                                android:layout_height="@dimen/sidebar_icon_size"
+                                android:padding="@dimen/padding_10"
+                                android:src="@drawable/ic_settings" />
+
+                            <ImageView
+                                android:id="@+id/toolbarMore"
+                                android:layout_width="@dimen/sidebar_icon_size"
+                                android:layout_height="@dimen/sidebar_icon_size"
+                                android:padding="@dimen/padding_10"
+                                android:src="@drawable/ic_more_3_dot" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_50">
+                        <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/tabLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/margin_50"
+                            android:background="@color/colorPrimary"
+                            android:textAlignment="center"
+                            app:tabTextAppearance="@style/TabTextAppearance"
+                            app:tabIndicatorHeight="@dimen/margin_2"
+                            app:tabIndicator="@drawable/bk_button_gradient_rect"
+                            app:tabIndicatorColor="@color/colorAccent"
+                            app:tabIndicatorFullWidth="false"
+                            app:tabTextColor="@color/grey_dark"
+                            app:tabSelectedTextColor="@color/grey_light"
+                            app:tabRippleColor="@android:color/transparent">
+                        </com.google.android.material.tabs.TabLayout>
+                        <LinearLayout
+                            android:id="@+id/lvBadgeNew"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone">
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+                                <TextView
+                                    android:id="@+id/tvTabName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/txt_videos"
+                                    android:textColor="@color/transparent_color"
+                                    android:layout_centerInParent="true"/>
+                                <TextView
+                                    android:id="@+id/tvBadgeNew"
+                                    android:layout_width="@dimen/margin_15"
+                                    android:layout_height="@dimen/padding_15"
+                                    android:layout_margin="@dimen/margin_5"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_toEndOf="@+id/tvTabName"
+                                    android:background="@drawable/bk_red_badge"
+                                    android:textColor="@color/white_color"
+                                    android:textSize="@dimen/text_8"
+                                    android:gravity="center"
+                                    android:visibility="visible"/>
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <com.growmore.firebrowser.utils.RtlViewPager
+                        android:id="@+id/viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <include layout="@layout/layout_completed_search"
+        android:id="@+id/lvSearch"
+        android:visibility="gone"/>
+    <include layout="@layout/layout_completed_delete"
+        android:id="@+id/lvDelete"
+        android:visibility="gone"/>
+    <include layout="@layout/layout_completed_move"
+        android:id="@+id/lvMove"
+        android:visibility="gone"/>
+    <RelativeLayout
+        android:id="@+id/lvCoverView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_trans_back"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"/>
 </RelativeLayout>

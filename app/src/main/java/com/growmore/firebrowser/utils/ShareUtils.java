@@ -17,7 +17,7 @@ public class ShareUtils {
         String message = context.getString(R.string.txt_share_string_app) + "" + context.getPackageName();
         shareIntent.putExtra(Intent.EXTRA_TEXT, message);
         shareIntent.setType("text/plain");
-        context.startActivity(Intent.createChooser(shareIntent, "Share App"));
+        context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.txt_share_app)));
     }
     public static void shareVideo(Context context, String path){
         String message = context.getString(R.string.txt_share_string_video) + context.getPackageName();
@@ -48,5 +48,27 @@ public class ShareUtils {
         }
         shareIntent.putExtra(Intent.EXTRA_STREAM , CommonUtils.getUriFromFile(context, new File(_str)));
         context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.txt_share)));
+    }
+
+    public static void createInstagramIntent(Context context, String filename){
+        String settype = "video/*";
+        String mediaPath =  filename;
+
+        // Create the new Intent using the 'Send' action.
+        Intent share = new Intent(Intent.ACTION_SEND);
+
+        // Set the MIME type
+        share.setType(settype);
+        share.setPackage("com.instagram.android");
+
+        // Create the URI from the media
+        File media = new File(mediaPath);
+        Uri uri = Uri.fromFile(media);
+
+        // Add the URI to the Intent.
+        share.putExtra(Intent.EXTRA_STREAM, uri);
+
+        // Broadcast the Intent.
+        context.startActivity(Intent.createChooser(share, context.getResources().getString(R.string.txt_share_to)));
     }
 }

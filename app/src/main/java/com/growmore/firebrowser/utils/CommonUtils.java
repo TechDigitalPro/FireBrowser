@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -15,9 +16,12 @@ import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.StrictMode;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.util.Patterns;
 import android.webkit.URLUtil;
 
@@ -26,9 +30,17 @@ import androidx.core.content.FileProvider;
 
 import com.growmore.firebrowser.R;
 import com.growmore.firebrowser.model.AppsModel;
+import com.growmore.firebrowser.model.EventMoveCount;
+import com.growmore.firebrowser.model.VideoModel;
 
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -50,7 +62,7 @@ import java.util.regex.Pattern;
 
 public class CommonUtils {
     public static final int PERMISSION_READ_WRITE = 212121;
-    public static final int FOLDER_PICKER_CODE = 212122;
+
     public static final String FIRE_PREF = "FireBrowser_";
     public static final String FIRE_APPS = "Conf/App/AppsList";
     public static final String FIRE_CONF = "Conf";
@@ -62,7 +74,64 @@ public class CommonUtils {
 
     private static final Pattern urlPattern = Pattern.compile("(?:^|[\\W])((ht|f)tp(s?):\\/\\/|www\\.)(([\\w\\-]+\\.){1,}?([\\w\\-.~]+\\/?)*[\\p{Alnum}.,%_=?&#\\-+()\\[\\]\\*$~@!:/{};']*)", 42);
     public static ArrayList<AppsModel> appsList = new ArrayList<>();
+    public static String lastUrl = "";
 
+
+    public static String formattedDate(Context context, String timeStamp){
+        SimpleDateFormat dateFormat_1 = new SimpleDateFormat("yyyyMMddHHmmss", Locale.US);
+        SimpleDateFormat dateFormat_2 = new SimpleDateFormat("EEE MMM dd", Locale.US);
+        try {
+            Date date = dateFormat_1.parse(timeStamp);
+            if (dateFormat_2.format(date).equalsIgnoreCase(dateFormat_2.format(new Date()))){
+                return context.getString(R.string.txt_today);
+            }
+            return dateFormat_2.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
+
+    }
+
+    public static String dateTimeToString(Date date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+        return dateFormat.format(date);
+    }
+    public static Date stringToDateTime(String dateStr){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+        try {
+            return dateFormat.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static Date stringToDateYYYYMMDD(String dateStr){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        try {
+            return dateFormat.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static String dateToStringYYYYMMDD(Date date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        return dateFormat.format(date);
+    }
+    public static Date stringToDateMMDDYYYY(String dateStr){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
+        try {
+            return dateFormat.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static String dateToStringMMDDYYYY(Date date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
+        return dateFormat.format(date);
+    }
     public static String dateCalculate(Date date, int days) {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
@@ -129,6 +198,23 @@ public class CommonUtils {
 
     }
 
+    public static int getStatusBarHeight(Activity activity) {
+        int result = 0;
+        int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = activity.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
+    public static int getNavigationBarHeight(Activity activity){
+        Resources resources = activity.getResources();
+        int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return resources.getDimensionPixelSize(resourceId);
+        }
+        return 0;
+    }
 
     public static String getCountryCodeFromRedirect(String result) {
         String resultStr = "";
@@ -186,6 +272,43 @@ public class CommonUtils {
         return false;
     }
 
+    public static void deleteVideo(VideoModel model){
+        if (!TextUtils.isEmpty(model.getOfflineUrl())){
+            File myFile = new File(model.getOfflineUrl());
+            if(myFile.exists())
+                myFile.delete();
+        }
+    }
+
+    public static void moveFiles(List<File> srcs, File directory) {
+        EventBus.getDefault().post(new EventMoveCount(0, srcs.size()));
+        for (int i = 0; i < srcs.size(); i++) {
+            File dst = new File(directory, srcs.get(i).getName());
+            OutputStream out;
+            try {
+                InputStream in = new FileInputStream(srcs.get(i));
+                try {
+                    out = new FileOutputStream(dst);
+                    byte[] buf = new byte[2048];
+                    while (true) {
+                        int len = in.read(buf);
+                        if (len > 0) {
+                            out.write(buf, 0, len);
+                        } else {
+                            out.close();
+                            in.close();
+                        }
+                    }
+                } catch (Throwable th) {
+                    in.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            srcs.get(i).delete();
+            EventBus.getDefault().post(new EventMoveCount(i + 1, srcs.size()));
+        }
+    }
 
     public static boolean isImageFile(String path) {
         String mimeType = URLConnection.guessContentTypeFromName(path);
@@ -273,6 +396,43 @@ public class CommonUtils {
 
         return "";
     }
+
+    public static String getFormattedSize(int size){
+        DecimalFormat df = new DecimalFormat("0.00");
+
+        float sizeKb = 1024.0f;
+        float sizeMb = sizeKb * sizeKb;
+        float sizeGb = sizeMb * sizeKb;
+        float sizeTerra = sizeGb * sizeKb;
+
+        if(size < sizeMb)
+            return df.format(size / sizeKb)+ " KB";
+        else if(size < sizeGb)
+            return df.format(size / sizeMb) + " MB";
+        else if(size < sizeTerra)
+            return df.format(size / sizeGb) + " GB";
+
+        return "";
+    }
+
+    public static String getFormattedSize(float size){
+        DecimalFormat df = new DecimalFormat("0.00");
+
+        float sizeKb = 1024.0f;
+        float sizeMb = sizeKb * sizeKb;
+        float sizeGb = sizeMb * sizeKb;
+        float sizeTerra = sizeGb * sizeKb;
+
+        if(size < sizeMb)
+            return df.format(size / sizeKb)+ " KB";
+        else if(size < sizeGb)
+            return df.format(size / sizeMb) + " MB";
+        else if(size < sizeTerra)
+            return df.format(size / sizeGb) + " GB";
+
+        return "";
+    }
+
     public static String getFormatCountFromInt(int count){
         try {
             DecimalFormat df = new DecimalFormat("0.0");
@@ -449,5 +609,23 @@ public class CommonUtils {
         return videoId;
     }
 
+    public int getWifiLevel(Context context)
+    {
+        WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        int linkSpeed = wifiManager.getConnectionInfo().getRssi();
+        int level = WifiManager.calculateSignalLevel(linkSpeed, 5);
+        return level;
+    }
+
+    public static boolean getWifiStatus(Context context){
+        ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        if (mWifi.isConnected()) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 
 }

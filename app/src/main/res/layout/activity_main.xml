@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimaryDark">
+    android:background="@drawable/ic_splash_back">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,6 +14,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/statusView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"/>
             <com.growmore.firebrowser.utils.RtlViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"

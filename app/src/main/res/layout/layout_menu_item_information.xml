@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_5">
+
+        <ImageView
+            android:id="@+id/im_icon"
+            android:layout_width="@dimen/margin_30"
+            android:layout_height="@dimen/margin_30"
+            android:padding="@dimen/margin_5"
+            android:visibility="gone"
+            tools:visibility="visible" />
+        <ImageView
+            android:id="@+id/im_thumb"
+            android:layout_width="@dimen/margin_3"
+            android:layout_height="@dimen/margin_3"
+            android:visibility="gone" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10"
+            android:layout_marginEnd="@dimen/margin_10"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/white_color"
+                app:autoSizeMaxTextSize="@dimen/text_15"
+                app:autoSizeMinTextSize="@dimen/text_12"
+                app:autoSizeTextType="uniform"
+                app:autoSizeStepGranularity="1sp"
+                tools:text="title" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/text_12"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_10"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_12"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/im_icon_sub"
+            android:layout_width="@dimen/margin_30"
+            android:layout_height="@dimen/margin_30"
+            android:padding="@dimen/margin_5"
+            android:layout_marginEnd="@dimen/margin_10"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/im_subDescription"
+            android:layout_width="@dimen/margin_30"
+            android:layout_height="@dimen/margin_30"
+            android:alpha="0.7"
+            android:padding="@dimen/margin_5"
+            android:src="@drawable/ic_arrow_next"
+            app:tint="@color/white_color"
+            android:visibility="gone"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sw_check"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_20"
+            android:layout_marginEnd="@dimen/margin_5"
+            android:visibility="visible"
+            android:background="@null"
+            android:thumb="@drawable/bk_switch_thumb"
+            app:track="@drawable/bk_switch_track"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/grey_light"
+        android:visibility="gone"/>
+</LinearLayout>

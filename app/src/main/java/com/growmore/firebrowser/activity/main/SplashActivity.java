@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.growmore.firebrowser.R;
+import com.growmore.firebrowser.activity.tutorial.IntroActivity;
 import com.growmore.firebrowser.application.App;
 import com.growmore.firebrowser.base.BaseActivity;
 
@@ -26,6 +27,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setFullScreen(this);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         initView();
@@ -42,7 +44,8 @@ public class SplashActivity extends BaseActivity {
 
     @OnClick(R.id.btStart)
     public void onClickStart(){
-        goToMain();
+        App.saveIsFirst(false);
+        goToIntro();
     }
 
     @OnClick(R.id.btSkip)
@@ -100,6 +103,12 @@ public class SplashActivity extends BaseActivity {
 
     private void goToMain(){
         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    private void goToIntro(){
+        Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

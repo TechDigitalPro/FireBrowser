@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/margin_350"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingEnd="@dimen/margin_10"
+    android:paddingStart="@dimen/margin_10">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bk_dropdown">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+            <LinearLayout
+                android:id="@+id/lvSortBrowser"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/bk_dropdown_header"
+                android:visibility="gone">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/btAddBookmark"
+                        android:layout_width="@dimen/margin_35"
+                        android:layout_height="@dimen/margin_35"
+                        android:padding="@dimen/margin_8"
+                        android:background="@drawable/bk_button_round_white_10"
+                        android:src="@drawable/ic_bookmarked" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/btHome"
+                        android:layout_width="@dimen/margin_35"
+                        android:layout_height="@dimen/margin_35"
+                        android:padding="@dimen/margin_8"
+                        android:background="@drawable/bk_button_round_white_10"
+                        android:src="@drawable/ic_home" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lvSortHome"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/bk_dropdown_header">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/margin_35"
+                        android:layout_height="@dimen/margin_35"
+                        android:padding="@dimen/margin_8"
+                        android:background="@drawable/bk_button_round_white_1"
+                        android:src="@drawable/ic_arrow_back"
+                        app:tint="@color/grey_dark"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/margin_35"
+                        android:layout_height="@dimen/margin_35"
+                        android:padding="@dimen/margin_8"
+                        android:background="@drawable/bk_button_round_white_1"
+                        android:src="@drawable/ic_arrow_next"
+                        app:tint="@color/grey_dark"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/margin_35"
+                        android:layout_height="@dimen/margin_35"
+                        android:padding="@dimen/margin_8"
+                        android:background="@drawable/bk_button_round_white_1"
+                        android:src="@drawable/ic_bookmark"
+                        app:tint="@color/grey_dark"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/margin_35"
+                        android:layout_height="@dimen/margin_35"
+                        android:padding="@dimen/margin_8"
+                        android:background="@drawable/bk_button_round_white_10"
+                        android:src="@drawable/ic_home" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margin_15"
+                android:paddingEnd="@dimen/margin_15"
+                android:paddingTop="@dimen/margin_20"
+                android:paddingBottom="@dimen/margin_20">
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemBookmark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_bookmark"
+                    app:inf_title="@string/txt_bookmarks" />
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_history"
+                    app:inf_title="@string/txt_history" />
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemIncognito"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_incognito"
+                    app:inf_title="@string/txt_incognito_mode"
+                    app:inf_show_switch_check="true"/>
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemShareWebpage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_share_webpage"
+                    app:inf_title="@string/txt_share_webpage" />
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemCopyLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_copy_link"
+                    app:inf_title="@string/txt_copy_link_url" />
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemDesktopSite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_desktop"
+                    app:inf_title="@string/txt_desktop_site"
+                    app:inf_show_switch_check="true"/>
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemSetting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_settings"
+                    app:inf_title="@string/txt_settings" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/white_color"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_2"
+                    android:layout_marginBottom="@dimen/margin_2"/>
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemTranslate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_translate"
+                    app:inf_title="@string/txt_translate" />
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemShareApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_share"
+                    app:inf_title="@string/txt_share_app" />
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemHelpFeedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_help"
+                    app:inf_title="@string/txt_help_and_feedback" />
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemHowTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_how_to"
+                    app:inf_title="@string/txt_how_to_download" />
+                <com.growmore.firebrowser.utils.MenuItemInformation
+                    android:id="@+id/itemExit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inf_icon="@drawable/ic_exit"
+                    app:inf_title="@string/txt_exit" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</LinearLayout>

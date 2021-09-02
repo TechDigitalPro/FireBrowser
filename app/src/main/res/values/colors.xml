@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#040D16</color>
     <color name="colorPrimaryDark">#171B20</color>
-    <color name="colorAccent">#FF7714</color>
+    <color name="colorAccent">#FFA800</color>
 
     <color name="yellow_gradient_start">#FFDE68</color>
     <color name="yellow_gradient_end">#EF9900</color>
@@ -14,15 +14,18 @@
     <color name="inactive_text_color">#6A7580</color>
     <color name="active_text_color">#FFFFFFFF</color>
 
+    <color name="white_5">#0DFFFFFF</color>
     <color name="white_10">#1AFFFFFF</color>
     <color name="white_20">#33FFFFFF</color>
     <color name="white_50">#80FFFFFF</color>
     <color name="white_70">#B3FFFFFF</color>
+    <color name="black_70">#B3000000</color>
 
-    <color name="grey_light">#707070</color>
-    <color name="grey_dark">#414548</color>
-    <color name="grey_light_back">#1A707070</color>
-    <color name="grey_dark_back">#4D707070</color>
+    <color name="grey_light">#DADADA</color>
+    <color name="grey_dark">#707070</color>
+    <color name="grey_search">#1AF2F2F2</color>
+    <color name="grey_light_back">#1AA8A8A8</color>
+    <color name="grey_dark_back">#4DA8A8A8</color>
     <color name="black_color">#000000</color>
     <color name="white_color">#FFFFFFFF</color>
 
@@ -30,11 +33,20 @@
     <color name="dialog_back_color">#3A3A3A</color>
     <color name="progress_bar_back">#4D2B94FE</color>
     <color name="grey_trans_back">#99000000</color>
-    <color name="mark_color">#FE2B54</color>
+    <color name="mark_color">#FF2525</color>
+    <color name="item_background_color">#2E3236</color>
 
     <color name="spin_wallet_color">#FA4416</color>
     <color name="spin_back_color">#7F1A8A</color>
     <color name="spin_item_color">#80F39AD0</color>
     <color name="spin_item_selected_color">#FFF30B51</color>
     <color name="spin_item_normal_color">#FFFE8112</color>
+
+    <!-- Browser -->
+    <color name="primaryColor">#040D16</color>
+    <color name="primaryDarkColor">#171B20</color>
+    <color name="secondaryColor">#040D16</color>
+    <color name="color_light">#FFFFFF</color>
+    <color name="color_hint">#A8A8A8</color>
+    <!-- Browser -->
 </resources>

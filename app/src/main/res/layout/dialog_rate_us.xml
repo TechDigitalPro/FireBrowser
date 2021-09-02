@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bk_dropdown"
+    android:padding="@dimen/margin_20"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imv_delete"
+        android:layout_width="@dimen/margin_100"
+        android:layout_height="@dimen/margin_100"
+        app:srcCompat="@drawable/ic_premium_header" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15"
+        android:text="@string/txt_rate_us"
+        android:textColor="@color/white_color"
+        android:gravity="center"
+        android:textSize="@dimen/text_20"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/grey_light"
+        android:textSize="@dimen/text_15"
+        android:text="@string/txt_hey_if_you_like_our_app_please_rate_us_5_stars"
+        android:layout_marginTop="@dimen/margin_15"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/lvRatingBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/rating_star_1"
+                    android:layout_width="@dimen/sidebar_icon_size"
+                    android:layout_height="@dimen/sidebar_icon_size"
+                    android:padding="@dimen/padding_5"
+                    android:src="@drawable/ic_favorite_inactive" />
+
+                <ImageView
+                    android:id="@+id/rating_star_2"
+                    android:layout_width="@dimen/sidebar_icon_size"
+                    android:layout_height="@dimen/sidebar_icon_size"
+                    android:padding="@dimen/padding_5"
+                    android:src="@drawable/ic_favorite_inactive" />
+
+                <ImageView
+                    android:id="@+id/rating_star_3"
+                    android:layout_width="@dimen/sidebar_icon_size"
+                    android:layout_height="@dimen/sidebar_icon_size"
+                    android:padding="@dimen/padding_5"
+                    android:src="@drawable/ic_favorite_inactive" />
+
+                <ImageView
+                    android:id="@+id/rating_star_4"
+                    android:layout_width="@dimen/sidebar_icon_size"
+                    android:layout_height="@dimen/sidebar_icon_size"
+                    android:padding="@dimen/padding_5"
+                    android:src="@drawable/ic_favorite_inactive" />
+
+                <ImageView
+                    android:id="@+id/rating_star_5"
+                    android:layout_width="@dimen/sidebar_icon_size"
+                    android:layout_height="@dimen/sidebar_icon_size"
+                    android:padding="@dimen/padding_5"
+                    android:src="@drawable/ic_favorite_inactive" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/btRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bk_button_gradient_rect"
+        android:gravity="center"
+        android:paddingStart="@dimen/margin_50"
+        android:paddingEnd="@dimen/margin_50"
+        android:paddingTop="@dimen/margin_10"
+        android:paddingBottom="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:text="@string/txt_rate_now"
+        android:textAllCaps="true"
+        android:textColor="@color/white_color"
+        android:textSize="@dimen/text_15"/>
+</LinearLayout>

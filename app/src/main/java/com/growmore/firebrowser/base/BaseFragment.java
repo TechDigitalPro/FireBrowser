@@ -15,7 +15,7 @@ public class BaseFragment extends Fragment {
     private BaseActivity mActivity;
     public BaseFragment() {
     }
-    public static BaseFragment newInstance(String param1, String param2) {
+    public static BaseFragment newInstance() {
         BaseFragment fragment = new BaseFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);

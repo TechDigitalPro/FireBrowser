@@ -23,26 +23,43 @@ public class DatabaseManager extends SQLiteOpenHelper{
     private static final int DB_version = 2;
     private static final String DB_name = "FIRE_BROWSER_DB.db";
     static final String VideoTable = "Table_VIDEO";
+    static final String FavoriteTable = "Table_FAVORITE";
+    static final String OtherTable = "Table_OTHER";
 
     //------------------------------------- video --------------------------------------------------//
     public static final String KEY_id = "key_id";
+    public static final String KEY_time = "key_time";
     public static final String KEY_model = "key_model";
 
     private static final String CREATE_VIDEO_TABLE = "CREATE TABLE IF NOT EXISTS " + VideoTable +
             "(" + KEY_id + " TEXT ,"
+            + KEY_time + " TEXT ,"
+            + KEY_model + " TEXT"
+            + ")";
+    private static final String CREATE_FAVORITE_TABLE = "CREATE TABLE IF NOT EXISTS " + FavoriteTable +
+            "(" + KEY_id + " TEXT ,"
+            + KEY_time + " TEXT ,"
+            + KEY_model + " TEXT"
+            + ")";
+    private static final String CREATE_OTHER_TABLE = "CREATE TABLE IF NOT EXISTS " + OtherTable +
+            "(" + KEY_id + " TEXT ,"
+            + KEY_time + " TEXT ,"
             + KEY_model + " TEXT"
             + ")";
 
     static final String[] columnsVideo = new String[] {
             DatabaseManager.KEY_id,
+            DatabaseManager.KEY_time,
             DatabaseManager.KEY_model
     };
-    static final String[] columnsMusic = new String[] {
+    static final String[] columnsFavorite = new String[] {
             DatabaseManager.KEY_id,
+            DatabaseManager.KEY_time,
             DatabaseManager.KEY_model
     };
-    static final String[] columnsPoint = new String[] {
+    static final String[] columnsOther = new String[] {
             DatabaseManager.KEY_id,
+            DatabaseManager.KEY_time,
             DatabaseManager.KEY_model
     };
     //---------------------------------------------------------------------------------------------//
@@ -50,12 +67,16 @@ public class DatabaseManager extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_VIDEO_TABLE);
+        db.execSQL(CREATE_FAVORITE_TABLE);
+        db.execSQL(CREATE_OTHER_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d("db", "update");
         db.execSQL("DROP TABLE IF EXISTS '" + CREATE_VIDEO_TABLE + "'");
+        db.execSQL("DROP TABLE IF EXISTS '" + CREATE_FAVORITE_TABLE + "'");
+        db.execSQL("DROP TABLE IF EXISTS '" + CREATE_OTHER_TABLE + "'");
         onCreate(db);
     }
 

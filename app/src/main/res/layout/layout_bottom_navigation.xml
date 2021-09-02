@@ -11,109 +11,141 @@
         android:orientation="horizontal"
         android:background="@color/colorPrimary">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/lvBottomBrowse"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true">
-            <RelativeLayout
-                android:id="@+id/lvBottomActiveBrowse"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="@dimen/bottom_header_size"
-                    android:layout_height="@dimen/margin_2"
-                    android:background="@drawable/bk_button_gradient_rect"
-                    android:layout_centerHorizontal="true"/>
-                <ImageView
-                    android:layout_width="@dimen/sidebar_icon_size"
-                    android:layout_height="@dimen/sidebar_icon_size"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/bk_gradient_radial"
-                    android:alpha="0.3"/>
-            </RelativeLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/padding_5"
-                android:gravity="center"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/lvBottomImageBrowse"
-                    android:layout_width="@dimen/bottom_icon_size"
-                    android:layout_height="@dimen/bottom_icon_size"
-                    android:padding="@dimen/padding_5"
-                    android:src="@drawable/ic_bottom_browse_inactive" />
 
-                <TextView
-                    android:id="@+id/lvBottomTextBrowse"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:id="@+id/lvBottomActiveBrowse"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+                    <TextView
+                        android:layout_width="@dimen/bottom_header_size"
+                        android:layout_height="@dimen/margin_2"
+                        android:background="@drawable/bk_button_gradient_rect"
+                        android:layout_centerHorizontal="true"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/sidebar_icon_size"
+                        android:layout_height="@dimen/sidebar_icon_size"
+                        android:layout_centerHorizontal="true"
+                        android:alpha="0.3"
+                        android:src="@drawable/bk_gradient_radial" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:layout_height="@dimen/margin_20"
-                    android:text="@string/txt_browse"
-                    android:textColor="@color/bottom_button_text_color"
-                    app:autoSizeMaxTextSize="@dimen/text_10"
-                    app:autoSizeMinTextSize="@dimen/text_8"
-                    app:autoSizeTextType="uniform"
-                    app:autoSizeStepGranularity="1sp"/>
-            </LinearLayout>
-        </RelativeLayout>
-        <RelativeLayout
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_5">
+
+                    <ImageView
+                        android:id="@+id/lvBottomImageBrowse"
+                        android:layout_width="@dimen/bottom_icon_size"
+                        android:layout_height="@dimen/bottom_icon_size"
+                        android:padding="@dimen/padding_5"
+                        android:src="@drawable/ic_bottom_browse_inactive" />
+
+                    <TextView
+                        android:id="@+id/lvBottomTextBrowse"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_20"
+                        android:gravity="center"
+                        android:text="@string/txt_browse"
+                        android:textColor="@color/bottom_button_text_color"
+                        app:autoSizeMaxTextSize="@dimen/text_10"
+                        app:autoSizeMinTextSize="@dimen/text_8"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/lvBottomDownload"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true">
-            <RelativeLayout
-                android:id="@+id/lvBottomActiveDownload"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="@dimen/bottom_header_size"
-                    android:layout_height="@dimen/margin_2"
-                    android:background="@drawable/bk_button_gradient_rect"
-                    android:layout_centerHorizontal="true"/>
-                <ImageView
-                    android:layout_width="@dimen/sidebar_icon_size"
-                    android:layout_height="@dimen/sidebar_icon_size"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/bk_gradient_radial"
-                    android:alpha="0.3"/>
-            </RelativeLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/padding_5"
-                android:gravity="center"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/lvBottomImageDownload"
-                    android:layout_width="@dimen/bottom_icon_size"
-                    android:layout_height="@dimen/bottom_icon_size"
-                    android:src="@drawable/ic_bottom_download_inactive"
-                    android:padding="@dimen/padding_5"/>
-                <TextView
-                    android:id="@+id/lvBottomTextDownload"
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:layout_height="@dimen/margin_20"
-                    android:text="@string/txt_download"
-                    android:textColor="@color/bottom_button_text_color"
-                    app:autoSizeMaxTextSize="@dimen/text_10"
-                    app:autoSizeMinTextSize="@dimen/text_8"
-                    app:autoSizeTextType="uniform"
-                    app:autoSizeStepGranularity="1sp"/>
-            </LinearLayout>
 
-        </RelativeLayout>
-        <RelativeLayout
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:id="@+id/lvBottomActiveDownload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+                    <TextView
+                        android:layout_width="@dimen/bottom_header_size"
+                        android:layout_height="@dimen/margin_2"
+                        android:background="@drawable/bk_button_gradient_rect"
+                        android:layout_centerHorizontal="true"/>
+                    <ImageView
+                        android:layout_width="@dimen/sidebar_icon_size"
+                        android:layout_height="@dimen/sidebar_icon_size"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/bk_gradient_radial"
+                        android:alpha="0.3"/>
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/padding_5"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/lvBottomImageDownload"
+                            android:layout_width="@dimen/bottom_icon_size"
+                            android:layout_height="@dimen/bottom_icon_size"
+                            android:padding="@dimen/padding_5"
+                            android:src="@drawable/ic_bottom_download_inactive" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/lvBottomTextDownload"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="@dimen/margin_20"
+                        android:text="@string/txt_download"
+                        android:textColor="@color/bottom_button_text_color"
+                        app:autoSizeMaxTextSize="@dimen/text_10"
+                        app:autoSizeMinTextSize="@dimen/text_8"
+                        app:autoSizeTextType="uniform"
+                        app:autoSizeStepGranularity="1sp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvBadgeDownload"
+                    android:layout_width="@dimen/margin_15"
+                    android:layout_height="@dimen/padding_15"
+                    android:layout_margin="@dimen/margin_5"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignEnd="@+id/lvBottomActiveDownload"
+                    android:background="@drawable/bk_red_badge"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/text_8"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/lvBottomCompleted"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -121,50 +153,54 @@
             android:clickable="true"
             android:focusable="true">
             <RelativeLayout
-                android:id="@+id/lvBottomActiveCompleted"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="@dimen/bottom_header_size"
-                    android:layout_height="@dimen/margin_2"
-                    android:background="@drawable/bk_button_gradient_rect"
-                    android:layout_centerHorizontal="true"/>
-                <ImageView
-                    android:layout_width="@dimen/sidebar_icon_size"
-                    android:layout_height="@dimen/sidebar_icon_size"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/bk_gradient_radial"
-                    android:alpha="0.3"/>
-            </RelativeLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/padding_5"
-                android:gravity="center"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/lvBottomImageCompleted"
-                    android:layout_width="@dimen/bottom_icon_size"
-                    android:layout_height="@dimen/bottom_icon_size"
-                    android:src="@drawable/ic_bottom_complete_inactive"
-                    android:padding="@dimen/padding_5"/>
-                <TextView
-                    android:id="@+id/lvBottomTextCompleted"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:id="@+id/lvBottomActiveCompleted"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+                    <TextView
+                        android:layout_width="@dimen/bottom_header_size"
+                        android:layout_height="@dimen/margin_2"
+                        android:background="@drawable/bk_button_gradient_rect"
+                        android:layout_centerHorizontal="true"/>
+                    <ImageView
+                        android:layout_width="@dimen/sidebar_icon_size"
+                        android:layout_height="@dimen/sidebar_icon_size"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/bk_gradient_radial"
+                        android:alpha="0.3"/>
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/padding_5"
                     android:gravity="center"
-                    android:layout_height="@dimen/margin_20"
-                    android:text="@string/txt_completed"
-                    android:textColor="@color/bottom_button_text_color"
-                    app:autoSizeMaxTextSize="@dimen/text_10"
-                    app:autoSizeMinTextSize="@dimen/text_8"
-                    app:autoSizeTextType="uniform"
-                    app:autoSizeStepGranularity="1sp"/>
-            </LinearLayout>
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/lvBottomImageCompleted"
+                        android:layout_width="@dimen/bottom_icon_size"
+                        android:layout_height="@dimen/bottom_icon_size"
+                        android:src="@drawable/ic_bottom_complete_inactive"
+                        android:padding="@dimen/padding_5"/>
+                    <TextView
+                        android:id="@+id/lvBottomTextCompleted"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="@dimen/margin_20"
+                        android:text="@string/txt_completed"
+                        android:textColor="@color/bottom_button_text_color"
+                        app:autoSizeMaxTextSize="@dimen/text_10"
+                        app:autoSizeMinTextSize="@dimen/text_8"
+                        app:autoSizeTextType="uniform"
+                        app:autoSizeStepGranularity="1sp"/>
+                </LinearLayout>
 
-        </RelativeLayout>
-        <RelativeLayout
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/lvBottomVpn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -172,48 +208,53 @@
             android:clickable="true"
             android:focusable="true">
             <RelativeLayout
-                android:id="@+id/lvBottomActiveVpn"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="@dimen/bottom_header_size"
-                    android:layout_height="@dimen/margin_2"
-                    android:background="@drawable/bk_button_gradient_rect"
-                    android:layout_centerHorizontal="true"/>
-                <ImageView
-                    android:layout_width="@dimen/sidebar_icon_size"
-                    android:layout_height="@dimen/sidebar_icon_size"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/bk_gradient_radial"
-                    android:alpha="0.3"/>
-            </RelativeLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/padding_5"
-                android:gravity="center"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/lvBottomImageVpn"
-                    android:layout_width="@dimen/bottom_icon_size"
-                    android:layout_height="@dimen/bottom_icon_size"
-                    android:src="@drawable/ic_bottom_vpn_inactive"
-                    android:padding="@dimen/padding_5"/>
-                <TextView
-                    android:id="@+id/lvBottomTextVpn"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:id="@+id/lvBottomActiveVpn"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+                    <TextView
+                        android:layout_width="@dimen/bottom_header_size"
+                        android:layout_height="@dimen/margin_2"
+                        android:background="@drawable/bk_button_gradient_rect"
+                        android:layout_centerHorizontal="true"/>
+                    <ImageView
+                        android:layout_width="@dimen/sidebar_icon_size"
+                        android:layout_height="@dimen/sidebar_icon_size"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/bk_gradient_radial"
+                        android:alpha="0.3"/>
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/padding_5"
                     android:gravity="center"
-                    android:layout_height="@dimen/margin_20"
-                    android:text="@string/txt_fire_vpn"
-                    android:textColor="@color/bottom_button_text_color"
-                    app:autoSizeMaxTextSize="@dimen/text_10"
-                    app:autoSizeMinTextSize="@dimen/text_8"
-                    app:autoSizeTextType="uniform"
-                    app:autoSizeStepGranularity="1sp"/>
-            </LinearLayout>
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/lvBottomImageVpn"
+                        android:layout_width="@dimen/bottom_icon_size"
+                        android:layout_height="@dimen/bottom_icon_size"
+                        android:src="@drawable/ic_bottom_vpn_inactive"
+                        android:padding="@dimen/padding_5"/>
+                    <TextView
+                        android:id="@+id/lvBottomTextVpn"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="@dimen/margin_20"
+                        android:text="@string/txt_fire_vpn"
+                        android:textColor="@color/bottom_button_text_color"
+                        app:autoSizeMaxTextSize="@dimen/text_10"
+                        app:autoSizeMinTextSize="@dimen/text_8"
+                        app:autoSizeTextType="uniform"
+                        app:autoSizeStepGranularity="1sp"/>
+                </LinearLayout>
 
-        </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

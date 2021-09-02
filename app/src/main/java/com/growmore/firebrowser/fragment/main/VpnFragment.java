@@ -31,6 +31,16 @@ public class VpnFragment extends BaseFragment {
         if (getArguments() != null) {
         }
     }
+    @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+        if (!menuVisible && getActivity() != null){
+            try {
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -1,8 +1,8 @@
 <resources>
-    <string name="txt_ads_interstitial_key" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="txt_ads_native_key" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
-    <string name="txt_ads_banner_key" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="txt_ads_rewarded_video_key" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="txt_ads_interstitial_key">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="txt_ads_native_key">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="txt_ads_banner_key">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="txt_ads_rewarded_video_key">ca-app-pub-3940256099942544/5224354917</string>
 
     <string name="app_name">Fire Browser</string>
 
@@ -12,19 +12,407 @@
     <string name="txt_share_app">Share App</string>
     <string name="txt_share">Share</string>
 
+    <string name="txt_google">Google</string>
+    <string name="txt_vimeo">Vimeo</string>
+    <string name="txt_facebook">Facebook</string>
+    <string name="txt_instagram">Instagram</string>
+    <string name="txt_twitter">Twitter</string>
+    <string name="txt_daily_motion">DailyMotion</string>
+
     <string name="txt_loading">Loading...</string>
     <string name="txt_copied_text">Copied Text</string>
     <string name="txt_system_info">System info</string>
     <string name="txt_browse">Browse</string>
     <string name="txt_download">Download</string>
     <string name="txt_completed">Completed</string>
-    <string name="txt_fire_vpn">Fire Vpn</string>
+    <string name="txt_fire_vpn">Fire VPN</string>
     <string name="txt_welcome_to">Welcome to</string>
     <string name="txt_fire">Fire</string>
     <string name="txt_browser">Browser</string>
     <string name="txt_starts">Starts</string>
     <string name="txt_skip"><u>Skip</u></string>
     <string name="txt_and_accept_default_privacy_settings">And accept default privacy settings</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_watch_free_videos">Watch free videos</string>
+
+
+    <!-- Browser -->
+    <string name="app_ok">OK</string>
+    <string name="app_cancel">Cancel</string>
+    <string name="app_done">Save as bookmark successfully</string>
+    <string name="app_error">Save as bookmark error</string>
+    <string name="list_empty">List is empty</string>
+    <string name="album_title_bookmarks">Bookmarks</string>
+    <string name="album_title_history">History</string>
+    <string name="album_title_home">Home</string>
+    <string name="album_title_tab">Opened Tabs</string>
+    <string name="search_hint">Search</string>
+
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_lime">Lime</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_grey">Grey</string>
+
+    <!-- Menu -->
+    <string name="main_menu_tabPreview">Open tab preview</string>
+    <string name="main_menu_new_tab">New tab (background)</string>
+    <string name="main_menu_new_tabOpen">New tab (foreground)</string>
+    <string name="main_omnibox_input_hint">Search or type URL</string>
+    <string name="menu_open_with">Open link with …</string>
+
+    <string name="menu_quit">Quit</string>
+    <string name="menu_openFav">Open Favorite</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_edit">Edit</string>
+    <string name="menu_closeTab">Close tab</string>
+    <string name="menu_download">Open downloads</string>
+    <string name="menu_fav">Save as favorite</string>
+    <string name="menu_sc">Shortcut on home screen</string>
+    <string name="menu_sort">Sort by …</string>
+    <string name="menu_filter">Filter by …</string>
+
+    <string name="menu_share_link">Share link</string>
+
+    <string name="menu_save_home">Save at Home</string>
+    <string name="menu_save_bookmark">Save as bookmark</string>
+    <string name="menu_save_as">Save as …</string>
+    <string name="menu_save_pdf">Save as PDF</string>
+    <string name="menu_shareClipboard">Copy to clipboard</string>
+
+    <string name="menu_other_searchSite">Search on site</string>
+    <string name="menu_other_info">About \"Fire Browser\"</string>
+
+    <!-- Dialog -->
+    <string name="dialog_title_hint">Title:</string>
+    <string name="dialog_URL_hint">URL:</string>
+    <string name="dialog_extension_hint">Extension (for example: \".jpg\"):</string>
+    <string name="dialog_sign_in_username">Username</string>
+    <string name="dialog_sign_in_password">Password</string>
+    <string name="dialog_title_download">Download the file?</string>
+    <string name="dialog_content_resubmission">Resubmit your data?</string>
+    <string name="dialog_content_ssl_error">The certificate of the site is not trusted. Proceed anyway?</string>
+
+    <string name="dialog_sortName">Sort by name</string>
+    <string name="dialog_sortIcon">Sort by icon</string>
+    <string name="dialog_sortDate">Sort by date</string>
+
+    <!-- Settings -->
+    <string name="setting_label">Settings</string>
+
+    <!-- browser setting -->
+    <string name="setting_title_browser">Browser Settings</string>
+    <string name="setting_title_start_control">Start Control</string>
+
+    <string name="setting_title_search_engine">Search Engine</string>
+    <string name="setting_summary_search_engine_google">Google</string>
+    <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
+    <string name="setting_summary_search_engine_startpage">StartPage</string>
+    <string name="setting_summary_search_engine_bing">Bing</string>
+    <string name="setting_summary_search_engine_baidu">Baidu</string>
+    <string name="setting_summary_search_engine_startpage_de">StartPage (de)</string>
+    <string name="setting_summary_search_engine_searx">Searx</string>
+    <string name="setting_summary_search_engine_qwant">Qwant</string>
+    <string name="setting_summary_search_engine_ecosia">Ecosia</string>
+    <string name="setting_summary_search_engine_metager">Metager</string>
+
+    <string name="setting_title_font">Font size</string>
+
+    <string name="setting_title_dom">DOM Storage</string>
+    <string name="setting_title_dom_whitelist">DOM Whitelist</string>
+    <string name="setting_summary_dom">DOM Storage allows the application to store page elements that could include user sensitive information. Disabling this prevents local storage from being used.</string>
+
+    <string name="setting_title_save_data">Request \'Save Data\'</string>
+
+    <!-- browser start -->
+    <string name="setting_title_images">Images</string>
+    <string name="setting_title_cookie">Cookies</string>
+    <string name="setting_summary_cookie_delete">If enabled, all cookies will be deleted. Also the Cookies of trusted websites.</string>
+    <string name="setting_summary_cookie">Enable Cookies. Cookies are small text files, which are stored on your device. Websites use them for example to store user settings (for example search settings). But they could also be used to collect personal user data. Third party cookies (they collect user data for advertising) are always disabled.</string>
+    <string name="setting_title_whitelistCookie">Cookie whitelist</string>
+
+    <string name="setting_title_javascript">JavaScript</string>
+    <string name="setting_summary_javascript">Enable JavaScript. Many websites need JavaScript for their functionality (menus, loading and displaying images, …). But they are also a risk and can be used for attacks.</string>
+    <string name="setting_title_whitelistJS">JavaScript whitelist</string>
+
+    <string name="setting_title_adblock">AdBlock</string>
+    <string name="setting_summary_adblock">Enable AdBlock to block annoying ads. Sites also load faster when enabled.</string>
+    <string name="setting_title_adblockHost">Blocked content</string>
+
+    <string name="setting_title_location">Location</string>
+    <string name="setting_summary_location">Allow websites to access your location. Some websites (like Google maps for navigation) need this enabled.</string>
+
+    <string name="setting_title_history">History</string>
+
+    <string name="setting_title_autofill">Form Data</string>
+    <string name="setting_summary_autofill">Enable the saving of form data (Android Nougat and below) or autofill service (Android Oreo and above).</string>
+
+
+    <!-- browser clear -->
+    <string name="data_summary">All files will be exported to the \"Documents/browser_backup/\" directory of your SD-card.</string>
+    <string name="clear_title_quit">Clear on application exit</string>
+    <string name="clear_title_cache">Clear Cache</string>
+    <string name="clear_title_cookie">Clear Cookies</string>
+    <string name="clear_title_history">Clear History</string>
+    <string name="localData">Clear on device stored data</string>
+
+    <string name="clear_title_deleteDatabase">Delete database</string>
+    <string name="clear_summary_deleteDatabase">Delete the whole database (Startpage, bookmarks, history and all whitelists).</string>
+
+
+    <!-- App setting -->
+    <string name="setting_title_app">App Settings</string>
+    <string name="setting_title_ui">Behavior/UI</string>
+    <string name="setting_title_data">Backup</string>
+
+    <string name="setting_filter">Bookmark filter</string>
+
+    <string name="setting_title_fav">Favorite</string>
+
+    <string name="setting_title_searchEngine">Custom search engine</string>
+
+    <string name="setting_title_userAgent">Custom user agent</string>
+    <string name="setting_enter_userAgent">Enter user agent</string>
+
+    <string name="setting_title_fingerPrint">Fingerprint protection</string>
+    <string name="setting_title_whitelist">Exceptions</string>
+    <string name="setting_tab">Tab</string>
+    <string name="setting_theme">Theme</string>
+    <string name="setting_theme_system">System</string>
+
+    <!-- App behavior -->
+    <string name="setting_title_hideToolbar">Hide toolbar</string>
+
+    <string name="setting_title_behavior">Behavior</string>
+
+    <string name="setting_title_confirm_exit">Confirm browser exit</string>
+
+    <string name="setting_title_confirm_tab_close">Confirm tab close</string>
+
+    <string name="setting_overView">Overview</string>
+    <string name="setting_overView_onStart_title">Show on start</string>
+
+    <string name="setting_gestures">Gestures</string>
+
+    <string name="setting_title_reopenLastTab">Reopen last tab</string>
+
+    <!-- gestures -->
+    <string name="setting_title_toolbar">Toolbar</string>
+    <string name="setting_title_toolbar_buttons">Toolbar buttons</string>
+    <string name="setting_gesture_up">Swipe up</string>
+    <string name="setting_gesture_down">Swipe down</string>
+    <string name="setting_gesture_left">Swipe left</string>
+    <string name="setting_gesture_right">Swipe right</string>
+    <string name="setting_gesture_01">Nothing</string>
+    <string name="setting_gesture_02">Forward in history</string>
+    <string name="setting_gesture_03">Back in history</string>
+    <string name="setting_gesture_04">Scroll to top</string>
+    <string name="setting_gesture_05">Scroll to bottom</string>
+    <string name="setting_gesture_06">Switch to left tab</string>
+    <string name="setting_gesture_07">Switch to right tab</string>
+    <string name="setting_gesture_08">Show overview</string>
+    <string name="setting_gesture_09">Open new tab</string>
+    <string name="setting_gesture_10">Close tab</string>
+    <string name="setting_gesture_hint">Long click the menu button to open fast settings dialog. Long press the home/bookmark/history icon to open the bookmark filter.</string>
+
+    <!-- Data -->
+    <string name="setting_title_export_bookmarks">Export bookmarks as HTML-file</string>
+    <string name="setting_title_import_bookmarks">Import bookmarks</string>
+    <string name="setting_title_export_appData">Export app data</string>
+    <string name="setting_title_import_appData">Import app data</string>
+    <string name="setting_summary_export_appData">Export whole database and your personal settings.</string>
+    <string name="title_appData">App data</string>
+    <string name="hint_database">This will delete current data. Proceed?</string>
+    <string name="settings_data_restore">Restore</string>
+    <string name="settings_data_backup">Backup</string>
+
+
+    <!-- Others setting -->
+    <string name="setting_title_others">Others</string>
+
+    <!-- Toast -->
+    <string name="toast_add_whitelist_successful">Successfully added Domain</string>
+    <string name="toast_copy_successful">Successfully copied</string>
+    <string name="toast_delete_successful">Successfully deleted</string>
+    <string name="toast_domain_already_exists">Domain already exists</string>
+    <string name="toast_input_empty">You haven\'t input anything</string>
+    <string name="toast_invalid_domain">Invalid domain</string>
+    <string name="toast_webview_forward">Can\'t load next site</string>
+    <string name="toast_permission_sdCard">\"Fire Browser\" needs the permission to \"read and write on your storage\". This is needed to download files, taking screenshots and making backups of your data.</string>
+    <string name="toast_restart">You must restart \"Fire Browser\" to apply changes. Close now?</string>
+    <string name="toast_quit">Do you want to quit \"Fire Browser\"?</string>
+    <string name="toast_downloadComplete">Download complete. Open file manager?</string>
+    <string name="toast_unsecured">Website uses an unsecured connection (\"http\"). Try a secure connection (\"https\")?</string>
+    <string name="toast_backup">Backup data? This will overwrite the old backup.</string>
+
+
+    <!-- Whitelist -->
+    <string name="whitelist_menu_clear">Clear</string>
+    <string name="whitelist_edit_hint">Domain</string>
+    <string name="whitelist_add">Add</string>
+
+
+    <!-- Dialog help -->
+
+
+    <!-- Dialog changelog -->
+
+    <string name="changelog_dialog">
+
+        Your language isn\'t supported yet? You want to translate Fire Browser? Or make improvements to existing translations? Feel free to join us on Crowdin: https://crowdin.com/project/foss-browser.&lt;br&gt;&lt;br&gt;
+
+        &lt;b>On the following sites you have access to all important information about \"Fire Browser\". Please read also the help dialog within the app.&lt;/b>&lt;br>&lt;br>
+
+        \u25AA &lt;i>Project site:&lt;/i> https://github.com/scoute-dich/Browser&lt;br>
+        \u25AA &lt;i>Changelog:&lt;/i> https://github.com/scoute-dich/browser/blob/master/CHANGELOG.md&lt;br>
+        \u25AA &lt;i>FAQ:&lt;/i> https://github.com/scoute-dich/browser/blob/master/FAQs.md&lt;br>
+        \u25AA &lt;i>License:&lt;/i> https://github.com/scoute-dich/browser/blob/master/LICENSE.md&lt;br>
+        \u25AA &lt;i>Privacy:&lt;/i> https://github.com/scoute-dich/browser/blob/master/PRIVACY.md
+
+    </string>
+
+
+    <!--video view-->
+    <string name="video_resize_fit" translatable="false">Fit</string>
+    <string name="video_resize_crop" translatable="false">Crop</string>
+    <string name="video_orientation_video" translatable="false">Video orientation</string>
+    <string name="video_orientation_sensor" translatable="false">Auto-rotate</string>
+    <string name="onboarding_open_title" translatable="false">Choose a video to play</string>
+    <string name="onboarding_open_description" translatable="false">Tap to open a video file. Long tap to load external subtitles.</string>
+    <string name="open_subtitles" translatable="false">Load subtitles</string>
+    <string name="error_details" translatable="false">Details</string>
+    <string name="error_files_missing" translatable="false">Files app is disabled or missing</string>
+    <string name="subtitles_scope" translatable="false">To automatically load external subtitles, grant %s access to the topmost folder containing your videos (e.g. Movies).</string>
+    <string name="txt_url_copied_to_clipboard" translatable="false">URL copied to the Clipboard</string>
+    <string name="txt_brightness" translatable="false">Brightness</string>
+    <string name="txt_volume" translatable="false">Volume</string>
+    <string name="txt_progress" translatable="false">Progress</string>
+    <!--video view-->
+
+
+    <string name="txt_install" translatable="false">Install</string>
+    <string name="menu_mobileView">Mobile view</string>
+    <string name="menu_desktopView">Desktop view</string>
+    <string name="menu_dayView">Day view</string>
+    <string name="menu_nightView">Night view</string>
+    <string name="txt_search_or_browse_video_site">Search or browse video site</string>
+    <string name="txt_bookmarks">Bookmarks</string>
+    <string name="txt_history">History</string>
+    <string name="txt_incognito_mode">Incognito mode</string>
+    <string name="txt_desktop_site">Desktop Site</string>
+    <string name="txt_settings">Settings</string>
+    <string name="txt_help_and_feedback"><![CDATA[Help & Feedback]]></string>
+    <string name="txt_how_to_download">How to download?</string>
+    <string name="txt_exit">Exit</string>
+    <string name="txt_share_webpage">Share webpage</string>
+    <string name="txt_copy_link_url">Copy link URL</string>
+    <string name="txt_translate">Translate</string>
+    <string name="txt_no_bookmark_found_yet">No bookmark found yet</string>
+    <string name="txt_download_location">Download Location</string>
+    <string name="txt_private_holder_">Private Folder - Download files can only be accessed through this app</string>
+    <string name="txt_download_wifi_only">Download on Wi-Fi only</string>
+    <string name="txt_download_complete_ringtone">Download complete ringtone</string>
+    <string name="txt_download_complete_vibration">Download complete vibration</string>
+    <string name="txt_set_as_default_browser">Set as Default Browser</string>
+    <string name="txt_auto_vpn_connect">Auto VPN connect</string>
+    <string name="txt_block_ads">Block ads</string>
+    <string name="txt_clear_cache">Clear Cache</string>
+    <string name="txt_notification_settings">Notification Settings</string>
+    <string name="txt_about">About</string>
+    <string name="txt_rate_our_app">Rate our app</string>
+    <string name="txt_user_agreement">User Agreement</string>
+    <string name="txt_privacy_policy">Privacy Policy</string>
+    <string name="txt_update">Update</string>
+    <string name="txt_please_write_your_feedback">Please write your feedback</string>
+    <string name="txt_type_here">Type here...</string>
+    <string name="txt_send">Send</string>
+    <string name="txt_add_screenshot">+ Add Screenshot</string>
+    <string name="txt_please_enter_feedback">Please enter feedback</string>
+    <string name="txt_send_feedback">Send Feedback</string>
+    <string name="txt_gmail_not_installed">Gmail App is not installed</string>
+    <string name="txt_something_went_wrong">Something went wrong</string>
+    <string name="txt_you_have_not_picked_image">You haven\'t picked Image</string>
+    <string name="txt_your_system_info_will_be_sent_to" translatable="false">Your <font color='#FFA800'><u>System Info</u></font> will be sent to FireBrowser tech Department</string>
+    <string name="txt_your_download_files_visible_in_this_app_only">Your download files visible in this app only</string>
+    <string name="txt_to_keep_it_private_files_are_downloaded_to_private_folder"><![CDATA[To keep it private, files are downloaded to private folder. You can view in this app only. It\'s invisible from any other apps & phone galleries. Or you can make it visible anywhere by changing download locations in Settings]]></string>
+    <string name="txt_download_settings">Download Settings</string>
+    <string name="txt_pause_all">Pause all</string>
+    <string name="txt_resume_all">Resume all</string>
+    <string name="txt_delete_batch">Delete batch</string>
+    <string name="txt_private_folder">Private Folder</string>
+    <string name="txt_downloaded_files_can_only_be_accessed_through_this_app">Downloaded files can only be accessed through this app</string>
+    <string name="txt_public_folder">Public Folder</string>
+    <string name="txt_downloaded_files_available_from_phone_gallery">Downloaded files available from phone Gallery</string>
+    <string name="txt_hey_if_you_like_our_app_please_rate_us_5_stars">Hey! if you like our app please rate us 5 stars</string>
+    <string name="txt_videos">Videos</string>
+    <string name="txt_favorites">Favorites</string>
+    <string name="txt_other">Other</string>
+    <string name="txt_delete">Delete</string>
+    <string name="txt_move">Move</string>
+    <string name="txt_sort_by">Sort by</string>
+    <string name="txt_date">Date</string>
+    <string name="txt_name">Name</string>
+    <string name="txt_tap_to_connect_the_fire_vpn_and_keep_your_browsing_more_secure_and_anonymous">Tap to Connect the Fire VPN and keep your browsing more secure and anonymous</string>
+    <string name="txt_not_connected">Not Connected</string>
+    <string name="txt_auto_connect_server">Auto Connect Server</string>
+    <string name="txt_favorite_videos_will_be_displayed_here_when_you_add_your_downloaded_videos_to_favorite">Favorite videos will be displayed here when you add your downloaded videos to Favorite</string>
+    <string name="txt_today">Today</string>
+    <string name="txt_rename">Rename</string>
+    <string name="txt_go_to_website">Go to website</string>
+    <string name="txt_size">Size</string>
+    <string name="txt_select_search_engine">Select Search Engine</string>
+    <string name="txt_rate_us">Rate Us</string>
+    <string name="txt_rate_now">Rate Now</string>
+    <string name="txt_download_failed">Download Failed !</string>
+    <string name="txt_share_to">Share to</string>
+    <string name="txt_save">Save</string>
+    <string name="txt_how_to_download_instagram_videos">How to download Instagram videos</string>
+    <string name="txt_how_to_download_and_share_instagram_videos">How to download and share Instagram videos</string>
+    <string name="txt_how_to_download_videos_online">How to download videos online</string>
+    <string name="txt_free_vpn_included">Free <font color='#FFA800'>VPN</font> included</string>
+    <string name="txt_we_don_t_record_anything">we don\'t record anything</string>
+    <string name="txt_next">Next</string>
+    <string name="txt_enter">Enter</string>
+    <string name="txt_adblocker_included"><font color='#FFA800'>AdBlocker</font> included</string>
+    <string name="txt_enable_adblock_and_enjoy">Enable Adblock and enjoy</string>
+    <string name="txt_how_to_download_videos">How to download videos?</string>
+    <string name="txt_1_go_to_video_sites">1. Go to video sites</string>
+    <string name="txt_2_play_the_video">2. Play the Video</string>
+    <string name="txt_3_click_the_downloading_button">3. Click the downloading Button</string>
+    <string name="txt_4_start_downloading">4. Start downloading</string>
+    <string name="txt_open_instagram_and_share_to">Open Instagram and Share to...</string>
+    <string name="txt_choose_fire_browser">Choose <font color='#FFA800'>FIRE BROWSER</font></string>
+    <string name="txt_done_your_image_or_video_will_be_downloaded_automatically"><font color='#FFA800'>Done!</font> Your image or video will be downloaded automatically.</string>
+    <string name="txt_open_instagram_and_copy_link">Open Instagram and Copy link...</string>
+    <string name="txt_open_fire_browser">Open <font color='#FFA800'>FIRE BROWSER</font></string>
+    <string name="txt_got_it">Got it</string>
+    <string name="txt_search_result_d">Search result (%d)</string>
+    <string name="txt_available_storage">Available storage</string>
+    <string name="txt_f_gb_free">%s Free</string>
+    <string name="txt_f_gb_total">%s Total</string>
+    <string name="txt_d_selected">%d Selected</string>
+    <string name="txt_all">All</string>
+    <string name="txt_please_select_at_least_1_item">Please select at least 1 item</string>
+    <string name="txt_delete_selected_items">Delete selected items?</string>
+    <string name="txt_move_selected_items">Move selected items?</string>
+    <string name="txt_delete_these_items">Are you sure! you want to delete these items(%d)?</string>
+    <string name="txt_move_these_items">Are you sure! you want to move these items(%d)?</string>
+    <string name="txt_cancel">Cancel</string>
+    <string name="txt_move_to">Move to</string>
+    <string name="txt_internal_storage">Internal Storage</string>
+    <string name="txt_storage_access_permission_not_given">Storage access permission not given</string>
+    <string name="txt_moving">Moving</string>
+    <string name="txt_don_t_quit_the_app_to_while_moving">Don\'t quit the app to while moving</string>
+    <string name="txt_d_d">%d/%d</string>
+    <string name="txt_done">Done</string>
+    <string name="txt_please_select_fire_browser_always">Please set Fire Browser to ALWAYS</string>
+    <string name="txt_download_complete">Download complete.</string>
+    <string name="txt_you_wanted_download_on_wifi">You wanted to download video on Wi-Fi only, Please check Wi-Fi status.</string>
+    <!-- License changelog -->
+    <!-- Browser -->
 </resources>

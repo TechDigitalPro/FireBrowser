@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.text.TextUtils;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -26,9 +27,13 @@ import com.downloader.Progress;
 import com.growmore.firebrowser.R;
 import com.growmore.firebrowser.db.DBController;
 import com.growmore.firebrowser.model.AdModel;
+import com.growmore.firebrowser.model.BrowserSettingModel;
+import com.growmore.firebrowser.model.DownloadSettingModel;
 import com.growmore.firebrowser.model.DownloadStatusModel;
 import com.growmore.firebrowser.model.FireVideoModel;
+import com.growmore.firebrowser.model.VideoModel;
 import com.growmore.firebrowser.utils.CommonUtils;
+import com.growmore.firebrowser.utils.Config;
 import com.growmore.firebrowser.utils.GsonUtils;
 
 import java.io.File;
@@ -130,6 +135,42 @@ public class App extends MultiDexApplication {
                 context.getResources().getString(R.string.txt_ads_banner_key), context.getResources().getString(R.string.txt_ads_rewarded_video_key));
     }
 
+    public static BrowserSettingModel readBrowserSetting(){
+        SharedPreferences sharedPref = getDefaultSharedPreferences(context);
+        String modelStr =  sharedPref.getString(Config.BROWSER_SETTING_MODEL, "");
+        if (!TextUtils.isEmpty(modelStr)){
+            BrowserSettingModel model = GsonUtils.getInstance().fromJson(modelStr, BrowserSettingModel.class);
+            return model;
+        }
+        return new BrowserSettingModel();
+    }
+
+    public static void saveBrowserSetting(BrowserSettingModel model){
+        SharedPreferences sharedPref = getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        String modelStr = GsonUtils.getInstance().toJson(model);
+        editor.putString(Config.BROWSER_SETTING_MODEL, modelStr);
+        editor.apply();
+    }
+
+    public static DownloadSettingModel readDownloadSetting(){
+        SharedPreferences sharedPref = getDefaultSharedPreferences(context);
+        String modelStr =  sharedPref.getString(Config.DOWNLOAD_SETTING_MODEL, "");
+        if (!TextUtils.isEmpty(modelStr)){
+            DownloadSettingModel model = GsonUtils.getInstance().fromJson(modelStr, DownloadSettingModel.class);
+            return model;
+        }
+        return new DownloadSettingModel();
+    }
+
+    public static void saveDownloadSetting(DownloadSettingModel model){
+        SharedPreferences sharedPref = getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        String modelStr = GsonUtils.getInstance().toJson(model);
+        editor.putString(Config.DOWNLOAD_SETTING_MODEL, modelStr);
+        editor.apply();
+    }
+
     public static void saveIsFirst(boolean value){
         SharedPreferences sp = getDefaultSharedPreferences(context);
         SharedPreferences.Editor ed = sp.edit();
@@ -155,13 +196,13 @@ public class App extends MultiDexApplication {
     }
     public static String readCurrentDownloadPath() {
         SharedPreferences sharedPref = getDefaultSharedPreferences(context);
-        return sharedPref.getString("current_download_path", "/FireBrowser/Files");
+        return sharedPref.getString(Config.BROWSER_VIDEO_MODE, Config.BROWSER_VIDEO_PRIVATE);
     }
 
     public static void saveCurrentDownloadPath(String settingValue) {
         SharedPreferences sharedPref = getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("current_download_path", settingValue);
+        editor.putString(Config.BROWSER_VIDEO_MODE, settingValue);
         editor.apply();
     }
     public static int getFrequency() {
@@ -215,18 +256,26 @@ public class App extends MultiDexApplication {
         return new Locale(lang);
     }
 
-    public static void downloadVideo(FireVideoModel fireVideoModel) {
-        File directory = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + App.readCurrentDownloadPath());
+    public static void downloadVideo(VideoModel fireVideoModel) {
+        String downloadPath = App.getInstance().getFilesDir().getAbsolutePath() + "/FireVideos/";
+        if (!fireVideoModel.isPrivate()){
+            downloadPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/FireVideos/";
+        }
+        File directory = new File(downloadPath);
         if (!directory.exists()) {
             directory.mkdirs();
         }
+        fireVideoModel.setOfflineUrl(downloadPath + fireVideoModel.getTitle());
+
         LocalBroadcastManager _localBroadcastManager = LocalBroadcastManager.getInstance(context);
+        String finalDownloadPath = downloadPath;
+
 
         new AsyncTask<Void, Void, Void>() {
+            int downloadId = -1;
             @Override
             protected Void doInBackground(Void... voids) {
-                //int fileLength = getFileSize(new URL(fireVideoModel.getUrlDownload()));
-                PRDownloader.download(fireVideoModel.getUrl(), Environment.getExternalStorageDirectory().getAbsolutePath() + App.readCurrentDownloadPath(), fireVideoModel.getName())
+                downloadId = PRDownloader.download(fireVideoModel.getOnlineUrl(), finalDownloadPath, fireVideoModel.getTitle())
                         .build()
                         .setOnStartOrResumeListener(new OnStartOrResumeListener() {
                             @Override
@@ -234,6 +283,10 @@ public class App extends MultiDexApplication {
                                 Intent intent = new Intent();
                                 intent.setAction(DownloadStatusModel.ACT_DOWN_START);
                                 intent.putExtra(DownloadStatusModel.ACT_VIDEO_ID, fireVideoModel.getId());
+                                fireVideoModel.setDownloadId(downloadId);
+                                fireVideoModel.setDownload_status(1);
+                                intent.putExtra(DownloadStatusModel.ACT_DOWNLOAD_ID, fireVideoModel.getDownloadId());
+                                intent.putExtra(DownloadStatusModel.ACT_VIDEO_MODEL, GsonUtils.getInstance().toJson(fireVideoModel));
                                 _localBroadcastManager.sendBroadcast(intent);
                             }
                         })
@@ -241,8 +294,12 @@ public class App extends MultiDexApplication {
                             @Override
                             public void onPause() {
                                 Intent intent = new Intent();
-                                intent.setAction(DownloadStatusModel.ACT_DOWN_CANCEL);
+                                intent.setAction(DownloadStatusModel.ACT_DOWN_PAUSE);
                                 intent.putExtra(DownloadStatusModel.ACT_VIDEO_ID, fireVideoModel.getId());
+                                fireVideoModel.setDownloadId(downloadId);
+                                fireVideoModel.setDownload_status(4);
+                                intent.putExtra(DownloadStatusModel.ACT_DOWNLOAD_ID, fireVideoModel.getDownloadId());
+                                intent.putExtra(DownloadStatusModel.ACT_VIDEO_MODEL, GsonUtils.getInstance().toJson(fireVideoModel));
                                 _localBroadcastManager.sendBroadcast(intent);
                             }
                         })
@@ -252,6 +309,10 @@ public class App extends MultiDexApplication {
                                 Intent intent = new Intent();
                                 intent.setAction(DownloadStatusModel.ACT_DOWN_CANCEL);
                                 intent.putExtra(DownloadStatusModel.ACT_VIDEO_ID, fireVideoModel.getId());
+                                fireVideoModel.setDownloadId(downloadId);
+                                fireVideoModel.setDownload_status(2);
+                                intent.putExtra(DownloadStatusModel.ACT_DOWNLOAD_ID, fireVideoModel.getDownloadId());
+                                intent.putExtra(DownloadStatusModel.ACT_VIDEO_MODEL, GsonUtils.getInstance().toJson(fireVideoModel));
                                 _localBroadcastManager.sendBroadcast(intent);
                             }
                         })
@@ -264,19 +325,34 @@ public class App extends MultiDexApplication {
                                 bundle.putSerializable(DownloadStatusModel.ACT_PROGRESS, progress);
                                 intent.putExtra(DownloadStatusModel.ACT_PROGRESS, bundle);
                                 intent.putExtra(DownloadStatusModel.ACT_VIDEO_ID, fireVideoModel.getId());
+                                fireVideoModel.setDownloadId(downloadId);
+                                intent.putExtra(DownloadStatusModel.ACT_DOWNLOAD_ID, fireVideoModel.getDownloadId());
+                                intent.putExtra(DownloadStatusModel.ACT_VIDEO_MODEL, GsonUtils.getInstance().toJson(fireVideoModel));
                                 _localBroadcastManager.sendBroadcast(intent);
                             }
                         })
                         .start(new OnDownloadListener() {
                             @Override
                             public void onDownloadComplete() {
+                                fireVideoModel.setDownloadId(downloadId);
+                                fireVideoModel.setDownload_status(3);
                                 String timeStr = CommonUtils.getVideoDurationFromLocalFile(context, fireVideoModel.getOfflineUrl());
                                 fireVideoModel.setDuration(timeStr);
+
+                                fireVideoModel.setPrivate(App.readDownloadSetting().isPrivate());
                                 DBController.shared().insertVideo(fireVideoModel);
+
+/*                                if (App.readDownloadSetting().isPrivate()){
+                                    DBController.shared().insertVideo(fireVideoModel);
+                                }else {
+                                    DBController.shared().insertOther(fireVideoModel);
+                                }*/
 
                                 Intent intent = new Intent();
                                 intent.setAction(DownloadStatusModel.ACT_DOWN_COMPLETE);
                                 intent.putExtra(DownloadStatusModel.ACT_VIDEO_ID, fireVideoModel.getId());
+                                intent.putExtra(DownloadStatusModel.ACT_DOWNLOAD_ID, fireVideoModel.getDownloadId());
+                                intent.putExtra(DownloadStatusModel.ACT_VIDEO_MODEL, GsonUtils.getInstance().toJson(fireVideoModel));
                                 _localBroadcastManager.sendBroadcast(intent);
                             }
 
@@ -285,6 +361,10 @@ public class App extends MultiDexApplication {
                                 Intent intent = new Intent();
                                 intent.setAction(DownloadStatusModel.ACT_DOWN_ERROR);
                                 intent.putExtra(DownloadStatusModel.ACT_VIDEO_ID, fireVideoModel.getId());
+                                fireVideoModel.setDownloadId(downloadId);
+                                fireVideoModel.setDownload_status(2);
+                                intent.putExtra(DownloadStatusModel.ACT_DOWNLOAD_ID, fireVideoModel.getDownloadId());
+                                intent.putExtra(DownloadStatusModel.ACT_VIDEO_MODEL, GsonUtils.getInstance().toJson(fireVideoModel));
                                 _localBroadcastManager.sendBroadcast(intent);
                             }
                         });
